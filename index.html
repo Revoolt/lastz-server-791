@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111519">
+  <title>Last Z · Server 791</title>
+  <style>
+    :root{color-scheme:dark;--bg:#111519;--panel:#1d242b;--line:#394750;--text:#f8f3e8;--muted:#c2cdd4;--gold:#ffc66d}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,sans-serif}
+    header,main,footer{max-width:1060px;margin:auto;padding-inline:18px}
+    header{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand,.eyebrow{font-weight:850;letter-spacing:.12em;color:var(--gold)}
+    select{min-height:44px;max-width:55%;padding:6px 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);font:inherit}
+    .hero{padding:clamp(24px,6vw,60px);border:1px solid var(--line);border-radius:22px;background:radial-gradient(ellipse at top right,#5c4427,#202831 65%)}
+    h1{margin:.1em 0;font-size:clamp(2.5rem,9vw,5.5rem);line-height:1.07}
+    h2{margin:30px 0 12px;font-size:1.45rem}
+    p{margin:8px 0 0;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:12px}
+    .card{min-width:0;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
+    .card h3{margin:4px 0;font-size:1.15rem}
+    .card ul{margin:.5em 0 0;padding-inline-start:1.3em;color:var(--muted)}
+    .faction{border-inline-start:4px solid var(--accent)}
+    footer{color:var(--muted);padding-block:26px}
+    :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+  </style>
+</head>
+<body>
+  <header>
+    <strong class="brand" dir="ltr">LAST Z / 791</strong>
+    <select id="language" aria-label="Language">
+      <option value="en">English</option>
+      <option value="es">Español</option>
+      <option value="pt">Português</option>
+      <option value="fr">Français</option>
+      <option value="ro">Română</option>
+      <option value="ar">العربية</option>
+      <option value="de">Deutsch</option>
+      <option value="zh">简体中文</option>
+      <option value="ko">한국어</option>
+    </select>
+  </header>
+
+  <main>
+    <section class="hero">
+      <span class="eyebrow" id="tag"></span>
+      <h1 id="title">Server 791</h1>
+      <p id="intro"></p>
+    </section>
+    <h2 id="guide-title"></h2>
+    <section class="grid" id="guides"></section>
+    <h2 id="faction-title"></h2>
+    <section class="grid" id="factions"></section>
+  </main>
+  <footer id="footer"></footer>
+
+  <script>
+    const languages = {
+      en: ["Language","Community guide","Server 791","Build your HQ, prepare for events and learn how to fight.","Guide topics","Season 1 factions","Unofficial Last Z community guide",
+        ["HQ requirements & research","Events & rewards","Vehicles & combat","Heroes & formations","Troops & resources","Glossary"],
+        ["Assaulters","Shooters","Riders"]],
+      es: ["Idioma","Guía de la comunidad","Servidor 791","Mejora tu HQ, prepara los eventos y aprende a combatir.","Temas de la guía","Facciones de la temporada 1","Guía no oficial de la comunidad de Last Z",
+        ["Requisitos del HQ e investigación","Eventos y recompensas","Vehículos y combate","Héroes y formaciones","Tropas y recursos","Glosario"],
+        ["Asalto","Tiradores","Jinetes"]],
+      pt: ["Idioma","Guia da comunidade","Servidor 791","Melhore seu QG, prepare-se para os eventos e aprenda a lutar.","Tópicos do guia","Facções da temporada 1","Guia não oficial da comunidade de Last Z",
+        ["Requisitos do QG e pesquisa","Eventos e recompensas","Veículos e combate","Heróis e formações","Tropas e recursos","Glossário"],
+        ["Assalto","Atiradores","Cavaleiros"]],
+      fr: ["Langue","Guide communautaire","Serveur 791","Améliorez votre QG, préparez les événements et apprenez à combattre.","Rubriques du guide","Factions de la saison 1","Guide communautaire non officiel de Last Z",
+        ["Prérequis du QG et recherche","Événements et récompenses","Véhicules et combat","Héros et formations","Troupes et ressources","Glossaire"],
+        ["Assaut","Tireurs","Cavaliers"]],
+      ro: ["Limbă","Ghidul comunității","Serverul 791","Dezvoltă-ți baza, pregătește-te pentru evenimente și învață să lupți.","Secțiunile ghidului","Facțiunile sezonului 1","Ghid neoficial al comunității Last Z",
+        ["Cerințe HQ și cercetare","Evenimente și recompense","Vehicule și luptă","Eroi și formații","Trupe și resurse","Glosar"],
+        ["Trupe de asalt","Trăgători","Călăreți"]],
+      ar: ["اللغة","دليل المجتمع","الخادم 791","طوّر مقرّك واستعد للفعاليات وتعلّم القتال.","أقسام الدليل","فصائل الموسم الأول","دليل غير رسمي لمجتمع Last Z",
+        ["متطلبات المقر والأبحاث","الفعاليات والمكافآت","المركبات والقتال","الأبطال والتشكيلات","القوات والموارد","المصطلحات"],
+        ["قوات الاقتحام","الرماة","الفرسان"]],
+      de: ["Sprache","Community-Leitfaden","Server 791","Baue dein HQ aus, bereite dich auf Events vor und lerne zu kämpfen.","Themen","Fraktionen der ersten Saison","Inoffizieller Community-Leitfaden für Last Z",
+        ["HQ-Voraussetzungen und Forschung","Events und Belohnungen","Fahrzeuge und Kampf","Helden und Formationen","Truppen und Ressourcen","Glossar"],
+        ["Sturmtruppen","Schützen","Reiter"]],
+      zh: ["语言","社区攻略","791 服","升级总部、备战活动，掌握战斗技巧。","攻略主题","第 1 赛季阵营","Last Z 非官方社区攻略",
+        ["总部升级条件与科技研究","活动与奖励","载具与战斗","英雄与阵容","部队与资源","术语表"],
+        ["突击兵","射手","骑兵"]],
+      ko: ["언어","커뮤니티 가이드","791 서버","본부를 강화하고 이벤트에 대비하며 전투를 배워 보세요.","가이드 주제","시즌 1 진영","Last Z 비공식 커뮤니티 가이드",
+        ["본부 업그레이드 조건과 연구","이벤트와 보상","차량과 전투","영웅과 편성","병력과 자원","용어집"],
+        ["돌격병","사수","기병"]]
+    };
+
+    const $ = id => document.getElementById(id);
+    const codes = ["HQ / TECH","VS / FP / SvS","VEHICLES / PvP","S1","T1–T10 / RSS","RF / TP / RTP / EB"];
+    const names = ["Blood Rose","Wings of Dawn","Guard of Order"];
+    const colors = ["#ff687d","#65a9ff","#ffa058"];
+
+    function render(lang) {
+      const [label,tag,title,intro,guides,factions,footer,topics,troops] = languages[lang];
+      document.documentElement.lang = lang === "zh" ? "zh-Hans" : lang;
+      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+      document.title = "Last Z · " + title;
+      $("language").setAttribute("aria-label", label);
+      Object.entries({tag,title,intro,"guide-title":guides,"faction-title":factions,footer})
+        .forEach(([id,value]) => $(id).textContent = value);
+      $("guides").innerHTML = topics.map((topic,i) =>
+        `<article class="card"><b class="eyebrow" dir="ltr">${codes[i]}</b><h3>${topic}</h3></article>`
+      ).join("");
+      $("factions").innerHTML = names.map((name,i) =>
+        `<article class="card faction" style="--accent:${colors[i]}"><h3><bdi>${name}</bdi></h3><p>${troops[i]}</p></article>`
+      ).join("");
+    }
+
+    let lang = (navigator.language || "en").split("-")[0];
+    try { lang = localStorage.getItem("last-z-791-language") || lang; } catch {}
+    if (!Object.hasOwn(languages, lang)) lang = "en";
+    $("language").value = lang;
+    render(lang);
+    $("language").addEventListener("change", event => {
+      const choice = event.target.value;
+      render(choice);
+      try { localStorage.setItem("last-z-791-language", choice); } catch {}
+    });
+  </script>
+</body>
+</html>
