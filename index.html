@@ -330,7 +330,7 @@ a.card{color:inherit;text-decoration:none}a.card:hover{border-color:var(--gold);
       }));
       const troopTypes = units.split("|");
       $("factions").replaceChildren(...factions.map(([name, slug, color], i) =>
-        card(`https://lastz.guide/images/formations/${slug}.png`, name, "", troopTypes[i], color)
+        (() => {const tile=card(`https://lastz.guide/images/formations/${slug}.png`, name, "", troopTypes[i], color);if (i !== 1) return tile;const link=document.createElement("a");link.className=tile.className;link.style.cssText=tile.style.cssText;link.href="./wings-of-dawn.html";link.append(...tile.childNodes);return link;})()
       ));
     }
 
