@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quick Glossary · VAX Academy</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#101115;color:#fff7eb;font:1rem/1.45 system-ui,sans-serif}
+main{max-width:48rem;margin:auto;padding:1rem}
+nav{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1rem}
+a,select{color:inherit}
+nav a,select{display:inline-grid;align-items:center;min-height:44px;border:1px solid #bd8549;border-radius:.4rem;background:#191a20;padding:.5rem .75rem}
+.poster{overflow:hidden;border:1px solid #925e38;border-radius:1rem;background:radial-gradient(ellipse at top,#4d251e,#121318 65%);box-shadow:0 16px 40px #0008}
+.banner,.footer-art{width:100%;background:url('./vax-glossary-en.png') no-repeat;background-size:100% auto}
+.banner{aspect-ratio:1024 / 272;background-position:center top}
+.footer-art{aspect-ratio:1024 / 156;background-position:center bottom}
+h1{text-align:center;font-size:clamp(1.55rem,6vw,3rem);margin:.65rem .6rem 1rem;text-transform:uppercase;text-shadow:0 2px 8px #000}
+.panel{--accent:#ff493b;--edge:#982219;margin:0 clamp(.45rem,3vw,1.35rem) 1rem;border:2px solid var(--accent);border-radius:.65rem;overflow:hidden;background:#151518;box-shadow:0 0 16px color-mix(in srgb,var(--accent) 26%,transparent)}
+.panel:nth-child(2){--accent:#38ebdb;--edge:#00746d}
+.panel:nth-child(3){--accent:#ffc04c;--edge:#855400}
+h2{margin:0;text-align:center;background:linear-gradient(145deg,#191a1d,var(--edge),#202024);border-bottom:1px solid var(--accent);padding:.35rem;font-size:clamp(1.12rem,4vw,1.8rem);text-transform:uppercase}
+dl{margin:0;padding:0 .65rem}
+.row{display:grid;grid-template-columns:minmax(5rem,24%) 1fr;align-items:baseline;gap:.5rem;padding:.45rem .15rem;border-bottom:1px solid #fff3}
+.row:last-child{border-bottom:0}
+dt{font-weight:900;color:var(--accent);text-align:start}
+dd{margin:0;font-weight:650;overflow-wrap:anywhere}
+</style>
+</head>
+<body>
+<main>
+<nav><a id="home" href="./index.html">Home</a><select id="language" aria-label="Language">
+<option value="en">English</option><option value="es">Español</option><option value="pt">Português</option><option value="fr">Français</option><option value="ro">Română</option><option value="ar">العربية</option><option value="de">Deutsch</option><option value="zh">简体中文</option><option value="ko">한국어</option>
+</select></nav>
+<article class="poster" aria-labelledby="title">
+<div class="banner" role="img" aria-label="VAX Academy · Last Z · Server 791"></div>
+<h1 id="title">Quick Glossary</h1>
+<div id="panels"></div>
+<div class="footer-art" aria-hidden="true"></div>
+</article>
+</main>
+<script>
+const glossary = {
+en:[
+"Quick Glossary|Home|Language|Combat|Base & Alliance|Events",
+"Reinforcements|Teleport|Random Teleport|Formations 1–4|Tank vs Tank|Player vs Player|Player vs Environment",
+"Headquarters|Non-Aggression Pact|Officer / Leader|Resources|Troop Tiers|Combat Power|Free to Play",
+"Alliance Duel|Full Preparedness|Server vs Server|Canyon Clash|Alliance Recognition|Enemy Buster"],
+es:[
+"Glosario rápido|Inicio|Idioma|Combate|Base y alianza|Eventos",
+"Refuerzos|Teletransporte|Teletransporte aleatorio|Formaciones 1–4|Tanque contra tanque|Jugador contra jugador|Jugador contra entorno",
+"Cuartel general|Pacto de no agresión|Oficial / Líder|Recursos|Niveles de tropas|Poder de combate|Jugar gratis",
+"Duelo de alianzas|Preparación total|Servidor contra servidor|Choque del cañón|Reconocimiento de alianza|Eliminación de enemigos"],
+pt:[
+"Glossário rápido|Início|Idioma|Combate|Base e aliança|Eventos",
+"Reforços|Teletransporte|Teletransporte aleatório|Formações 1–4|Tanque contra tanque|Jogador contra jogador|Jogador contra o ambiente",
+"Quartel-general|Pacto de não agressão|Oficial / Líder|Recursos|Níveis de tropas|Poder de combate|Jogar de graça",
+"Duelo de alianças|Preparação total|Servidor contra servidor|Confronto no cânion|Reconhecimento da aliança|Eliminação de inimigos"],
+fr:[
+"Glossaire rapide|Accueil|Langue|Combat|Base et alliance|Événements",
+"Renforts|Téléportation|Téléportation aléatoire|Formations 1–4|Char contre char|Joueur contre joueur|Joueur contre environnement",
+"Quartier général|Pacte de non-agression|Officier / Chef|Ressources|Niveaux de troupes|Puissance de combat|Jouer gratuitement",
+"Duel d’alliances|Préparation totale|Serveur contre serveur|Affrontement du canyon|Reconnaissance de l’alliance|Élimination des ennemis"],
+ro:[
+"Glosar rapid|Acasă|Limbă|Luptă|Bază și alianță|Evenimente",
+"Întăriri|Teleportare|Teleportare aleatorie|Formații 1–4|Tanc contra tanc|Jucător contra jucător|Jucător contra mediu",
+"Cartier general|Pact de neagresiune|Ofițer / Lider|Resurse|Niveluri ale trupelor|Putere de luptă|Joc gratuit",
+"Duelul alianțelor|Pregătire completă|Server contra server|Confruntare în canion|Recunoașterea alianței|Eliminarea inamicilor"],
+ar:[
+"مسرد سريع|الرئيسية|اللغة|القتال|القاعدة والتحالف|الفعاليات",
+"تعزيزات|انتقال فوري|انتقال فوري عشوائي|التشكيلات ١–٤|دبابة ضد دبابة|لاعب ضد لاعب|لاعب ضد البيئة",
+"المقر الرئيسي|ميثاق عدم الاعتداء|ضابط / قائد|الموارد|مستويات القوات|القوة القتالية|اللعب المجاني",
+"مبارزة التحالفات|الاستعداد الكامل|خادم ضد خادم|صدام الوادي|تقدير التحالف|القضاء على الأعداء"],
+de:[
+"Kurzglossar|Startseite|Sprache|Kampf|Basis und Allianz|Events",
+"Verstärkung|Teleport|Zufallsteleport|Formationen 1–4|Panzer gegen Panzer|Spieler gegen Spieler|Spieler gegen Umgebung",
+"Hauptquartier|Nichtangriffspakt|Offizier / Anführer|Ressourcen|Truppenstufen|Kampfkraft|Kostenlos spielbar",
+"Allianzduell|Volle Vorbereitung|Server gegen Server|Schlacht im Canyon|Allianzanerkennung|Feinde ausschalten"],
+zh:[
+"速查术语表|首页|语言|战斗|基地与联盟|活动",
+"增援|迁城|随机迁城|编队 1–4|坦克对战|玩家对战|玩家对环境",
+"总部|互不侵犯协议|官员 / 盟主|资源|兵种等级|战力|免费游玩",
+"联盟对决|全面备战|跨服对战|峡谷对战|联盟表彰|消灭敌人"],
+ko:[
+"빠른 용어집|홈|언어|전투|기지 및 연맹|이벤트",
+"지원군|순간이동|무작위 순간이동|편성 1–4|전차 대 전차|플레이어 대 플레이어|플레이어 대 환경",
+"본부|불가침 협정|간부 / 연맹장|자원|병력 등급|전투력|무료 플레이",
+"연맹 대결|완전 대비|서버 대 서버|협곡 전투|연맹 표창|적 섬멸"]
+};
+const codes = [
+  ["RF","TP","RTP","F1–F4","TvT","PvP","PvE"],
+  ["HQ","NAP","R4 / R5","RSS","T1–T10","CP","F2P"],
+  ["VS / AD","FP","SvS","CC","AR","EB"]
+];
+const preference = "last-z-791-language";
+const language = document.getElementById("language");
+const valid = key => Object.hasOwn(glossary,key);
+function render(lang) {
+  const [headings,...groups] = glossary[lang];
+  const [title,home,label,...sections] = headings.split("|");
+  document.documentElement.lang = lang === "zh" ? "zh-Hans" : lang;
+  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+  document.title = title + " · VAX Academy";
+  document.getElementById("title").textContent = title;
+  document.getElementById("home").textContent = home;
+  language.setAttribute("aria-label",label);
+  language.value = lang;
+  document.getElementById("panels").replaceChildren(...groups.map((group,index) => {
+    const panel = document.createElement("section");
+    panel.className = "panel";
+    const heading = document.createElement("h2");
+    heading.textContent = sections[index];
+    const list = document.createElement("dl");
+    group.split("|").forEach((definition,position) => {
+      const row = document.createElement("div");
+      row.className = "row";
+      const term = document.createElement("dt");
+      const code = document.createElement("bdi");
+      code.dir = "ltr";
+      code.textContent = codes[index][position];
+      term.append(code);
+      const meaning = document.createElement("dd");
+      meaning.textContent = definition;
+      row.append(term,meaning);
+      list.append(row);
+    });
+    panel.append(heading,list);
+    return panel;
+  }));
+}
+let saved;
+try { saved = localStorage.getItem(preference); } catch {}
+const requested = new URLSearchParams(location.search).get("lang");
+const browser = (navigator.language || "en").split("-")[0];
+render([requested,saved,browser].find(valid) || "en");
+language.addEventListener("change", () => {
+  const lang = language.value;
+  render(lang);
+  try { localStorage.setItem(preference,lang); } catch {}
+  const url = new URL(location.href);
+  url.searchParams.set("lang",lang);
+  history.replaceState(null,"",url);
+});
+</script>
+</body>
+</html>

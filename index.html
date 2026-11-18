@@ -317,11 +317,11 @@ a.card::after{content:"→";margin-inline-start:auto;color:var(--gold);font-weig
 
       $("guides").replaceChildren(...names.split("|").map((name, i) => {
         const [code, icon] = topics[i];
-        if (i === 3) {
+        if (i === 3 || i === 5) {
           const tile = card(icon, name, code);
           const link = document.createElement("a");
           link.className = tile.className;
-          link.href = "./heroes.html";
+          link.href = i === 3 ? "./heroes.html" : "./glossary.html?lang=" + lang;
           link.append(...tile.childNodes);
           return link;
         }
@@ -344,6 +344,7 @@ a.card::after{content:"→";margin-inline-start:auto;color:var(--gold);font-weig
   </script>
 </body>
 </html>
+
 
 
 
