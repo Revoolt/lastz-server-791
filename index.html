@@ -330,13 +330,7 @@ a.card::after{content:"→";margin-inline-start:auto;color:var(--gold);font-weig
       }));
       const troopTypes = units.split("|");
       $("factions").replaceChildren(...factions.map(([name, slug, color], i) =>
-        (() => {const tile=card(`https://lastz.guide/images/formations/${slug}.png`, name, "", troopTypes[i], color);if (i === 2) {
-          const status = document.createElement("small");
-          status.className = "pending";
-          status.textContent = ({en:"Coming soon",es:"Próximamente",pt:"Em breve",fr:"À venir",ro:"În curând",ar:"قريبًا",de:"Demnächst",zh:"即将推出",ko:"준비 중"})[lang];
-          tile.querySelector("div").append(status);
-          return tile;
-        }const link=document.createElement("a");link.className=tile.className;link.style.cssText=tile.style.cssText;link.href=i === 0 ? "./blood-rose.html" : "./wings-of-dawn.html";link.append(...tile.childNodes);return link;})()
+        (() => {const tile=card(`https://lastz.guide/images/formations/${slug}.png`, name, "", troopTypes[i], color);const link=document.createElement("a");link.className=tile.className;link.style.cssText=tile.style.cssText;link.href=["./blood-rose.html","./wings-of-dawn.html","./guard-of-order.html"][i];link.append(...tile.childNodes);return link;})()
       ));
     }
 
