@@ -201,7 +201,7 @@
 .hero-copy p{margin-inline:auto}
 .hero-copy .quick{justify-content:center}
 a.card{color:inherit;text-decoration:none}a.card:hover{border-color:var(--gold);filter:brightness(1.12)}
-</style>
+a.card::after{content:"→";margin-inline-start:auto;color:var(--gold);font-weight:900} #guides a.card::after{display:none}.pending{color:var(--gold);display:block;margin-top:3px}</style>
 </head>
 <body>
   <header>
@@ -322,7 +322,7 @@ a.card{color:inherit;text-decoration:none}a.card:hover{border-color:var(--gold);
           const tile = card(icon, name, code);
           const link = document.createElement("a");
           link.className = tile.className;
-          link.href = "./blood-rose.html";
+          link.href = "#faction-title";
           link.append(...tile.childNodes);
           return link;
         }
@@ -330,7 +330,13 @@ a.card{color:inherit;text-decoration:none}a.card:hover{border-color:var(--gold);
       }));
       const troopTypes = units.split("|");
       $("factions").replaceChildren(...factions.map(([name, slug, color], i) =>
-        (() => {const tile=card(`https://lastz.guide/images/formations/${slug}.png`, name, "", troopTypes[i], color);if (i !== 1) return tile;const link=document.createElement("a");link.className=tile.className;link.style.cssText=tile.style.cssText;link.href="./wings-of-dawn.html";link.append(...tile.childNodes);return link;})()
+        (() => {const tile=card(`https://lastz.guide/images/formations/${slug}.png`, name, "", troopTypes[i], color);if (i === 2) {
+          const status = document.createElement("small");
+          status.className = "pending";
+          status.textContent = ({en:"Coming soon",es:"Próximamente",pt:"Em breve",fr:"À venir",ro:"În curând",ar:"قريبًا",de:"Demnächst",zh:"即将推出",ko:"준비 중"})[lang];
+          tile.querySelector("div").append(status);
+          return tile;
+        }const link=document.createElement("a");link.className=tile.className;link.style.cssText=tile.style.cssText;link.href=i === 0 ? "./blood-rose.html" : "./wings-of-dawn.html";link.append(...tile.childNodes);return link;})()
       ));
     }
 
@@ -349,5 +355,6 @@ a.card{color:inherit;text-decoration:none}a.card:hover{border-color:var(--gold);
   </script>
 </body>
 </html>
+
 
 
