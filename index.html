@@ -194,7 +194,13 @@
     #guides .card:nth-child(4) { --x: 0%; --y: 100%; }
     #guides .card:nth-child(5) { --x: 50%; --y: 100%; }
     #guides .card:nth-child(6) { --x: 100%; --y: 100%; }
-  </style>
+  .hero{display:block;min-height:0;padding:0;background:#0b0d11;border-color:#824537}
+.masthead{display:block;width:100%;height:auto}
+.hero-copy{position:relative;margin-top:clamp(-100px,-7vw,-24px);padding:0 clamp(16px,5vw,52px) clamp(18px,4vw,40px);text-align:center;background:linear-gradient(transparent,#0b0d11 54%)}
+.hero-copy h1{font-size:clamp(1.55rem,4vw,3.1rem)}
+.hero-copy p{margin-inline:auto}
+.hero-copy .quick{justify-content:center}
+</style>
 </head>
 <body>
   <header>
@@ -213,14 +219,14 @@
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero"><img class="masthead" src="./vax-academy-banner.png" width="1774" height="887" alt="VAX Academy" fetchpriority="high"><div class="hero-copy">
       <span class="tag" id="tag">Community field guide</span>
       <h1 id="title">Server 791</h1>
       <p id="intro">Build your HQ, prepare for events and learn how to fight.</p>
       <nav class="quick">
         <a id="go-guides" href="#guide-title">Guide topics</a>
         <a id="go-factions" href="#faction-title">Season 1 factions</a>
-      </nav>
+      </nav></div>
     </section>
 
     <h2 id="guide-title">Guide topics</h2>
@@ -334,3 +340,4 @@
   </script>
 </body>
 </html>
+
