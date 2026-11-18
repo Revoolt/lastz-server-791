@@ -159,11 +159,46 @@
     @media (prefers-reduced-motion: no-preference) {
       html { scroll-behavior: smooth; }
     }
+      #guides { gap: 14px; }
+    #guides .card {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      align-items: flex-end;
+      min-height: 185px;
+      aspect-ratio: 1.6;
+      border-color: #9a6d3f;
+      background: #141a20;
+    }
+    #guides .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      aspect-ratio: 1;
+      background: url("./vax-guide-cards.png") var(--x) var(--y) / 300% 200% no-repeat;
+      pointer-events: none;
+    }
+    #guides .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, #090c10 0%, #090c10cf 24%, transparent 80%);
+      pointer-events: none;
+    }
+    #guides .card > div { position: relative; z-index: 1; }
+    #guides .card > img { display: none; }
+    #guides .card h3 { overflow-wrap: anywhere; text-shadow: 0 2px 8px #000; }
+    #guides .card:nth-child(1) { --x: 0%; --y: 0%; }
+    #guides .card:nth-child(2) { --x: 50%; --y: 0%; }
+    #guides .card:nth-child(3) { --x: 100%; --y: 0%; }
+    #guides .card:nth-child(4) { --x: 0%; --y: 100%; }
+    #guides .card:nth-child(5) { --x: 50%; --y: 100%; }
+    #guides .card:nth-child(6) { --x: 100%; --y: 100%; }
   </style>
 </head>
 <body>
   <header>
-    <strong class="brand" dir="ltr">LAST Z / 791</strong>
+    <strong class="brand" dir="ltr">VAX ACADEMY</strong>
     <select id="language" aria-label="Language">
       <option value="en">English</option>
       <option value="es">Español</option>
