@@ -24,6 +24,6 @@ const ext=["en","es"].includes(lang)?"png":"svg";
 for(const [i,section] of ["upgrades","formations"].entries()){
  const title=labels[lang][i+2],a=document.createElement("a"),img=document.createElement("img"),label=document.createElement("span"),small=document.createElement("small");
  a.className="poster";a.href="./blood-rose-"+section+"-"+lang+"."+ext;
- img.src=a.href;img.alt="Blood Rose · "+title;img.width=1024;img.height=ext==="png"?1536:i===0?1390:1710;
+ img.src=a.href;img.alt="Blood Rose · "+title;img.width=1024;img.height=1536;
  label.className="caption";label.append(title);small.textContent=labels[lang][4];label.append(small);a.append(img,label);document.querySelector(".gallery").append(a);
 }</script></body></html>
