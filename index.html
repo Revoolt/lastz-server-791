@@ -226,15 +226,14 @@ a.card::after{content:"→";margin-inline-start:auto;color:var(--gold);font-weig
       <p id="intro">Build your HQ, prepare for events and learn how to fight.</p>
       <nav class="quick">
         <a id="go-guides" href="#guide-title">Guide topics</a>
-        <a id="go-factions" href="#faction-title">Season 1 factions</a>
+        <a id="go-factions" href="./heroes.html">Season 1 factions</a>
       </nav></div>
     </section>
 
     <h2 id="guide-title">Guide topics</h2>
     <section class="grid" id="guides" aria-labelledby="guide-title"></section>
 
-    <h2 id="faction-title">Season 1 factions</h2>
-    <section class="grid" id="factions" aria-labelledby="faction-title"></section>
+
   </main>
 
   <footer id="footer">Unofficial Last Z community guide</footer>
@@ -313,7 +312,7 @@ a.card::after{content:"→";margin-inline-start:auto;color:var(--gold);font-weig
       Object.entries({
         tag, title, intro, footer,
         "guide-title": guides, "go-guides": guides,
-        "faction-title": factionTitle, "go-factions": factionTitle
+        "go-factions": names.split("|")[3]
       }).forEach(([id, value]) => $(id).textContent = value);
 
       $("guides").replaceChildren(...names.split("|").map((name, i) => {
@@ -322,16 +321,12 @@ a.card::after{content:"→";margin-inline-start:auto;color:var(--gold);font-weig
           const tile = card(icon, name, code);
           const link = document.createElement("a");
           link.className = tile.className;
-          link.href = "#faction-title";
+          link.href = "./heroes.html";
           link.append(...tile.childNodes);
           return link;
         }
         return card(icon, name, code);
       }));
-      const troopTypes = units.split("|");
-      $("factions").replaceChildren(...factions.map(([name, slug, color], i) =>
-        (() => {const tile=card(`https://lastz.guide/images/formations/${slug}.png`, name, "", troopTypes[i], color);const link=document.createElement("a");link.className=tile.className;link.style.cssText=tile.style.cssText;link.href=["./blood-rose.html","./wings-of-dawn.html","./guard-of-order.html"][i];link.append(...tile.childNodes);return link;})()
-      ));
     }
 
     const preference = "last-z-791-language";
