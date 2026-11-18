@@ -200,6 +200,7 @@
 .hero-copy h1{font-size:clamp(1.55rem,4vw,3.1rem)}
 .hero-copy p{margin-inline:auto}
 .hero-copy .quick{justify-content:center}
+a.card{color:inherit;text-decoration:none}a.card:hover{border-color:var(--gold);filter:brightness(1.12)}
 </style>
 </head>
 <body>
@@ -317,6 +318,14 @@
 
       $("guides").replaceChildren(...names.split("|").map((name, i) => {
         const [code, icon] = topics[i];
+        if (i === 3) {
+          const tile = card(icon, name, code);
+          const link = document.createElement("a");
+          link.className = tile.className;
+          link.href = "./blood-rose.html";
+          link.append(...tile.childNodes);
+          return link;
+        }
         return card(icon, name, code);
       }));
       const troopTypes = units.split("|");
@@ -340,4 +349,5 @@
   </script>
 </body>
 </html>
+
 
