@@ -1,1 +1,129 @@
-<link rel="stylesheet" href="./lastz-theme.css">
+/* VAX Academy · Last Z · Server 791 */
+:root {
+  --ink: #fff3dd;
+  --muted: #c4cbd1;
+  --gold: #ffc36a;
+}
+
+body {
+  background: radial-gradient(ellipse at top, #39291f, #0c1014 44rem);
+}
+
+/* Marca: conserva el texto original para lectores de pantalla. */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 13px;
+  border-inline-start: 4px solid var(--gold);
+  background: linear-gradient(135deg, #282126, #151a20);
+  font-size: 0;
+}
+
+.brand::after {
+  content: "VAX ACADEMY";
+  color: var(--ink);
+  font-size: .9rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+
+.hero {
+  background:
+    linear-gradient(0deg, #080b0ff7 3%, #080b0f94 40%, #080b0f12 83%),
+    url("./lastz-command.png") 72% center / cover no-repeat #262a2d;
+}
+
+.quick a {
+  min-height: 44px;
+}
+
+.quick a:hover {
+  filter: brightness(1.15);
+}
+
+/* Cada tarjeta toma una de las seis celdas del mosaico. */
+#guides {
+  gap: 14px;
+}
+
+#guides .card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  min-width: 0;
+  min-height: 185px;
+  aspect-ratio: 1.6;
+  padding: 16px;
+  border: 1px solid #9a6d3f;
+  border-radius: 12px;
+  background: #141a20;
+  box-shadow: 0 8px 24px #0007;
+}
+
+#guides .card::before,
+#guides .card::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+#guides .card::before {
+  z-index: -2;
+  inset: 0 0 auto;
+  aspect-ratio: 1 / 1;
+  background: url("./vax-guide-cards.png")
+              var(--tile-x) var(--tile-y) / 300% 200% no-repeat;
+}
+
+#guides .card::after {
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(
+    to top, #090c10 0%, #090c10e6 20%, #090c1066 51%, transparent 82%
+  );
+}
+
+/* Se sustituyen solo los iconos de temas, no los emblemas. */
+#guides .card > img {
+  display: none;
+}
+
+#guides .card .tag {
+  color: var(--gold);
+  font-size: .75rem;
+  font-weight: 850;
+}
+
+#guides .card h3 {
+  margin: 3px 0 0;
+  color: var(--ink);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  text-shadow: 0 2px 8px #000;
+}
+
+#guides .card:nth-child(1) { --tile-x: 0%;   --tile-y: 0%; }
+#guides .card:nth-child(2) { --tile-x: 50%;  --tile-y: 0%; }
+#guides .card:nth-child(3) { --tile-x: 100%; --tile-y: 0%; }
+#guides .card:nth-child(4) { --tile-x: 0%;   --tile-y: 100%; }
+#guides .card:nth-child(5) { --tile-x: 50%;  --tile-y: 100%; }
+#guides .card:nth-child(6) { --tile-x: 100%; --tile-y: 100%; }
+
+#factions .card {
+  border-inline-start: 4px solid var(--accent);
+}
+
+@media (max-width: 560px) {
+  .hero {
+    min-height: 350px;
+    background-position: 77% center;
+  }
+
+  #guides {
+    grid-template-columns: 1fr;
+  }
+}
