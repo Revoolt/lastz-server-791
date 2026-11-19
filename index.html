@@ -275,7 +275,7 @@ a.card::after{content:"→";margin-inline-start:auto;color:var(--gold);font-weig
  .hero-copy .quick .basics-button {width:100%;font-size:clamp(1rem,5vw,1.65rem);padding-inline:43% 22px}
  .hero-copy .quick .tips-button {font-size:clamp(.95rem,4.2vw,1.4rem)}
 }
-</style>
+.hero-copy .quick a.basics-button{cursor:pointer;text-decoration:none;color:#fff1ce}.hero-copy .quick a.basics-button:hover{background-color:#171310}</style>
 </head>
 <body>
   <header>
@@ -299,7 +299,7 @@ a.card::after{content:"→";margin-inline-start:auto;color:var(--gold);font-weig
       <h1 id="title">Server 791</h1>
       <p id="intro">Build your HQ, prepare for events and learn how to fight.</p>
       <nav class="quick">
-        <button class="basics-button" type="button" aria-disabled="true" title="Coming soon"><span class="basics-label">Basics</span><span class="basics-arrow" aria-hidden="true">›</span></button>
+        <a id="basics-link" class="basics-button" href="./basics.html"><span class="basics-label">Basics</span><span class="basics-arrow" aria-hidden="true">›</span></a>
         <button class="basics-button tips-button" type="button" aria-disabled="true" title="Coming soon"><span class="basics-label">Tips &amp; Tricks</span><span class="basics-arrow" aria-hidden="true">›</span></button>
       </nav></div>
     </section>
@@ -377,6 +377,7 @@ a.card::after{content:"→";margin-inline-start:auto;color:var(--gold);font-weig
     }
 
     function render(lang) {
+      $("basics-link").href = "./basics.html?lang=" + lang;
       const [label, tag, title, intro, guides, factionTitle, footer, names, units] = translations[lang];
       document.documentElement.lang = lang === "zh" ? "zh-Hans" : lang;
       document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
