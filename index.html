@@ -246,6 +246,35 @@ a.card::after{content:"→";margin-inline-start:auto;color:var(--gold);font-weig
  .basics-button{transition:filter .2s,transform .2s}
  .basics-button:hover{transform:translateY(-2px)}
 }
+
+.hero-copy .quick {
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ justify-content:start;
+ gap:16px;
+ width:100%;
+ direction:ltr;
+}
+.hero-copy .quick .basics-button {
+ --button-art:url("./vax-basics-button.png");
+ width:100%;max-width:none;
+ background-image:var(--button-art);
+ gap:10px;
+ padding-inline:43% 22px;
+ font-size:clamp(1rem,2.4vw,1.55rem);
+}
+.hero-copy .quick .tips-button {
+ --button-art:url("./vax-tips-tricks-button.png");
+ font-size:clamp(.95rem,2vw,1.3rem);
+ letter-spacing:.035em;
+}
+.hero-copy .quick .basics-button:hover {background-image:var(--button-art)}
+.basics-label {white-space:nowrap}
+@media(max-width:650px) {
+ .hero-copy .quick {grid-template-columns:minmax(0,1fr);gap:12px}
+ .hero-copy .quick .basics-button {width:100%;font-size:clamp(1rem,5vw,1.65rem);padding-inline:43% 22px}
+ .hero-copy .quick .tips-button {font-size:clamp(.95rem,4.2vw,1.4rem)}
+}
 </style>
 </head>
 <body>
@@ -271,6 +300,7 @@ a.card::after{content:"→";margin-inline-start:auto;color:var(--gold);font-weig
       <p id="intro">Build your HQ, prepare for events and learn how to fight.</p>
       <nav class="quick">
         <button class="basics-button" type="button" aria-disabled="true" title="Coming soon"><span class="basics-label">Basics</span><span class="basics-arrow" aria-hidden="true">›</span></button>
+        <button class="basics-button tips-button" type="button" aria-disabled="true" title="Coming soon"><span class="basics-label">Tips &amp; Tricks</span><span class="basics-arrow" aria-hidden="true">›</span></button>
       </nav></div>
     </section>
 
