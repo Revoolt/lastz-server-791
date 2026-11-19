@@ -300,7 +300,7 @@ a.card::after{content:"→";margin-inline-start:auto;color:var(--gold);font-weig
       <p id="intro">Build your HQ, prepare for events and learn how to fight.</p>
       <nav class="quick">
         <a id="basics-link" class="basics-button" href="./basics.html"><span class="basics-label">Basics</span><span class="basics-arrow" aria-hidden="true">›</span></a>
-        <button class="basics-button tips-button" type="button" aria-disabled="true" title="Coming soon"><span class="basics-label">Tips &amp; Tricks</span><span class="basics-arrow" aria-hidden="true">›</span></button>
+        <a id="tips-link" class="basics-button tips-button" href="./tips.html"><span class="basics-label">Tips &amp; Tricks</span><span class="basics-arrow" aria-hidden="true">›</span></a>
       </nav></div>
     </section>
 
@@ -377,6 +377,7 @@ a.card::after{content:"→";margin-inline-start:auto;color:var(--gold);font-weig
     }
 
     function render(lang) {
+      $("tips-link").href = "./tips.html?lang=" + lang;
       $("basics-link").href = "./basics.html?lang=" + lang;
       const [label, tag, title, intro, guides, factionTitle, footer, names, units] = translations[lang];
       document.documentElement.lang = lang === "zh" ? "zh-Hans" : lang;

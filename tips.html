@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101318">
+<title>Tips &amp; Tricks · VAX Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./tips.css">
+<script src="./tips-data.js" defer></script>
+<script src="./tips.js" defer></script>
+</head>
+<body id="top">
+<header class="site-header shell">
+<a class="brand" href="./index.html" aria-label="VAX Academy home"><span class="brand-mark" aria-hidden="true">V</span><span>VAX <b>ACADEMY</b></span></a>
+<label class="language-control"><span class="sr-only" id="language-label">Language</span><select id="language" aria-labelledby="language-label">
+<option value="en">English</option><option value="es">Español</option><option value="pt">Português</option><option value="fr">Français</option><option value="ro">Română</option><option value="de">Deutsch</option><option value="zh">简体中文</option><option value="ko">한국어</option><option value="ar">العربية</option>
+</select></label>
+</header>
+<main class="shell">
+<a class="back" href="./index.html" id="home">← Home</a>
+<section class="hero" aria-labelledby="page-title">
+<div class="hero-copy"><span class="eyebrow" dir="ltr">LAST Z · SERVER 791</span><h1 id="page-title">Tips &amp; Tricks</h1><p id="intro"></p><a class="hero-cta" href="#topics" id="start-link">Start here</a></div>
+</section>
+<section id="topics" aria-labelledby="topics-title">
+<div class="section-heading"><h2 id="topics-title">Browse by topic</h2><a href="#routine" id="routine-link">Check today’s tasks</a></div>
+<div class="topic-grid" id="topic-grid"></div>
+</section>
+<section class="routine" id="routine" aria-labelledby="daily-title">
+<details id="daily-panel">
+<summary><span class="routine-icon" aria-hidden="true">✓</span><span class="routine-heading"><strong id="daily-title">Daily checklist</strong><span id="daily-progress" role="status" aria-live="polite"></span></span><span class="toggle" aria-hidden="true">+</span></summary>
+<div class="routine-body"><p id="daily-help"></p><progress id="daily-meter" max="8" value="0" aria-label="Daily progress"></progress><div class="checklist" id="checklist"></div><button class="text-button" id="reset-checklist" type="button">Reset checklist</button></div>
+</details>
+</section>
+<section id="guide" aria-labelledby="faq-title">
+<div class="search-bar">
+<label class="search-wrap"><span class="search-icon" aria-hidden="true">⌕</span><span class="sr-only" id="search-label">Search the guide</span><input id="search" type="search" aria-labelledby="search-label" autocomplete="off" placeholder="Search questions, heroes or resources…"></label>
+<button class="clear-button" id="clear-search" type="button" hidden>Clear search</button>
+</div>
+<div class="faq-toolbar"><div class="active-filter"><button id="all-topics" type="button" aria-pressed="true">All topics</button><span id="result-count" role="status" aria-live="polite"></span></div><div class="expand-controls"><button id="expand" type="button">Open all</button><button id="collapse" type="button">Close all</button></div></div>
+<h2 id="faq-title">All topics</h2>
+<div id="questions"></div>
+<p id="no-results" class="empty" hidden></p>
+<aside class="event-note"><span aria-hidden="true">◷</span><p id="event-note"></p></aside>
+</section>
+<section class="related" aria-labelledby="related-title"><h2 id="related-title">Guide links</h2><nav id="related-links"></nav></section>
+</main>
+<footer class="shell"><span dir="ltr">VAX ACADEMY · LAST Z · 791</span><a id="back-top" href="#top">Back to top ↑</a></footer>
+<noscript><p class="shell">Please enable JavaScript to read the guide and choose a language.</p></noscript>
+</body>
+</html>
