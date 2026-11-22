@@ -392,11 +392,11 @@ a.card::after{content:"→";margin-inline-start:auto;color:var(--gold);font-weig
 
       $("guides").replaceChildren(...names.split("|").map((name, i) => {
         const [code, icon] = topics[i];
-        if (i === 0 || i === 2 || i === 3 || i === 5) {
+        if (i === 0 || i === 1 || i === 2 || i === 3 || i === 5) {
           const tile = card(icon, name, code);
           const link = document.createElement("a");
           link.className = tile.className;
-          const routes = {0: "hq", 2: "vehicles", 3: "heroes", 5: "glossary"};
+          const routes = {0: "hq", 1: "events", 2: "vehicles", 3: "heroes", 5: "glossary"};
           link.href = "./" + routes[i] + ".html?lang=" + lang;
           link.append(...tile.childNodes);
           return link;
