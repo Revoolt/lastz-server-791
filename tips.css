@@ -155,3 +155,6 @@ footer a{color:var(--gold)}
 .reference-figure a{display:block;border:1px solid #7b623f;border-radius:8px;overflow:hidden}
 .reference-figure img{display:block;width:100%;height:auto}
 .reference-figure figcaption{font-size:.75rem;color:#d4b67e;padding-top:8px}
+
+/* Expandable map guide posters */
+.poster-reference{max-width:600px}

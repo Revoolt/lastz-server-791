@@ -1,6 +1,8 @@
 "use strict";
 
-const FAQ_CATEGORIES = [0,0,4,1,1,4,0,1,1,1,1,2,2,2,2,2,3,3,3,4,3,3,5,5,5,1];
+const FAQ_CATEGORIES = [0,0,4,1,1,4,0,1,1,1,1,2,2,2,2,2,3,3,3,4,3,3,5,5,5,1,3,3];
+const FAQ_ORDER = [26,27,...Array.from({length:26},(_,id)=>id)];
+const MAP_POSTERS = {26:"vax-switch-server-view-en.png",27:"vax-hide-state-trucks-en.png"};
 const TOPIC_ART = [
   ["0%", "0%", "⌂", "#ffc570"],
   ["50%", "100%", "▣", "#e8bd6e"],
@@ -193,7 +195,7 @@ function renderQuestions() {
   $("expand").disabled = ids.length === 0;
   $("collapse").disabled = ids.length === 0;
   const groups = content.categories.flatMap(([title], category) => {
-    const questionIds = ids.filter(id => FAQ_CATEGORIES[id] === category);
+    const questionIds = FAQ_ORDER.filter(id => ids.includes(id) && FAQ_CATEGORIES[id] === category);
     if (questionIds.length === 0) return [];
     const group = document.createElement("section");
     group.className = "faq-group";
@@ -247,6 +249,23 @@ function createQuestion(id) {
     body.append(link);
   }
 
+  if (MAP_POSTERS[id]) {
+    const figure = document.createElement("figure");
+    figure.className = "reference-figure poster-reference";
+    const link = document.createElement("a");
+    link.href = "./" + MAP_POSTERS[id];
+    const image = document.createElement("img");
+    image.src = link.href;
+    image.alt = question;
+    image.width = 1024;
+    image.height = 1536;
+    image.loading = "lazy";
+    link.append(image);
+    const caption = document.createElement("figcaption");
+    caption.textContent = content.ui[25];
+    figure.append(link, caption);
+    body.append(figure);
+  }
   if (id === 20) {
     const figure = document.createElement("figure");
     figure.className = "reference-figure";
